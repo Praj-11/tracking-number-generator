@@ -106,7 +106,7 @@ The API will be accessible at: `http://localhost:8080/next-tracking-number`
 #### Example:
 
 ```http
-GET http://localhost:8080/next-tracking-number?origin_country_id=IN&destination_country_id=US&weight=1.234&created_at=2025-06-08T10:00:00Z&customer_id=de619854-b59b-425e-9db4-943979e1bd49&customer_name=TestCustomer&customer_slug=test-customer
+GET http://localhost:8080/api/v1/tracking-service/next-tracking-number?origin_country_id=IN&destination_country_id=US&weight=1.234&created_at=2025-06-08T10:00:00Z&customer_id=de619854-b59b-425e-9db4-943979e1bd49&customer_name=TestCustomer&customer_slug=test-customer
 ```
 
 #### Sample Response:
