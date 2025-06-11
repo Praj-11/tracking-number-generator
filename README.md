@@ -1,10 +1,10 @@
-# 📦 Tracking Number Generator API
+# Tracking Number Generator API
 
 A Spring Boot application to generate unique, RFC 3339-compliant parcel tracking numbers based on multiple input parameters. It supports high concurrency and is resilient, scalable, and backed by MongoDB.
 
 ---
 
-## 🚀 Features
+## Features
 
 - Generates unique tracking numbers based on origin, destination, customer info, weight, etc.
 - Ensures uniqueness using MongoDB with a unique index.
@@ -15,7 +15,7 @@ A Spring Boot application to generate unique, RFC 3339-compliant parcel tracking
 
 ---
 
-## 📦 Tech Stack
+## Tech Stack
 
 - Java 17
 - Spring Boot 3
@@ -28,7 +28,7 @@ A Spring Boot application to generate unique, RFC 3339-compliant parcel tracking
 
 ---
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 - Java 17+
 - Maven 3.8+
@@ -37,7 +37,7 @@ A Spring Boot application to generate unique, RFC 3339-compliant parcel tracking
 
 ---
 
-## 🛠️ Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the repository
 
@@ -46,18 +46,7 @@ git clone https://github.com/your-username/tracking-number-generator.git
 cd tracking-number-generator
 ```
 
-### 2. Configure MongoDB
-
-Ensure MongoDB is running locally. You can start it with Docker:
-
-```bash
-docker run -d -p 27017:27017 --name mongo-test \
-  -e MONGO_INITDB_ROOT_USERNAME=testuser \
-  -e MONGO_INITDB_ROOT_PASSWORD=testpass \
-  mongo
-```
-
-### 3. Configure application properties
+### 2. Configure application properties
 
 Edit `src/main/resources/application.properties`:
 
@@ -75,7 +64,7 @@ resilience4j.retry.instances.generateTrackingNumber.wait-duration=200ms
 
 ---
 
-## ▶️ Running the Application
+## Running the Application
 
 Use Maven to build and run:
 
@@ -87,7 +76,7 @@ The API will be accessible at: `http://localhost:8080/next-tracking-number`
 
 ---
 
-## 📮 API Endpoint
+## API Endpoint
 
 ### `GET /next-tracking-number`
 
@@ -120,7 +109,7 @@ GET http://localhost:8080/api/v1/tracking-service/next-tracking-number?origin_co
 
 ---
 
-## ✅ Running Tests
+## Running Tests
 
 Use Maven to run unit tests:
 
@@ -132,7 +121,7 @@ You can find test cases under `src/test/java/.../TrackingServiceTest.java`
 
 ---
 
-## 🧪 Testing Tips
+## Testing Tips
 
 - Simulate failures by inserting duplicate tracking numbers into MongoDB manually and watch Resilience4j retries.
 - Enable logs by adding the following to `application.properties`:
