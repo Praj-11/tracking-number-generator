@@ -22,6 +22,7 @@ public record TrackingRequest(
                 regexp = "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?([+-]\\d{2}:\\d{2}|Z)$",
                 message = "Invalid RFC 3339 timestamp format"
         )
+        @NotNull
         String created_at,
         @NotNull(message = "customer id is required")
         UUID customer_id,
