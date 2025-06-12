@@ -26,8 +26,6 @@ public class TrackingService {
 
     @Retry(name = "generateTrackingNumber", fallbackMethod = "fallbackTracking")
     public TrackingResponse generateUniqueTrackingNumber(TrackingRequest request) {
-        validateRequest(request);
-
         int maxAttempts = 10;
         for (int attempt = 0; attempt < maxAttempts; attempt++) {
             String trackingNumber = TrackingNumberUtil.generate(request);
@@ -40,24 +38,6 @@ public class TrackingService {
             }
         }
         throw new IllegalStateException("Failed to generate a unique tracking number after multiple attempts.");
-    }
-
-    private void validateRequest(TrackingRequest req) {
-        if (req.origin_country_id() == null || req.origin_country_id().isBlank()) {
-            throw new IllegalArgumentException("origin_country_id is required.");
-        }
-        if (req.destination_country_id() == null || req.destination_country_id().isBlank()) {
-            throw new IllegalArgumentException("destination_country_id is required.");
-        }
-        if (req.weight() <= 0) {
-            throw new IllegalArgumentException("weight must be positive.");
-        }
-        if (req.customer_id() == null) {
-            throw new IllegalArgumentException("customer_id is required.");
-        }
-        if (req.customer_slug() == null || req.customer_slug().isBlank()) {
-            throw new IllegalArgumentException("customer_slug is required.");
-        }
     }
 
     // Fallback method for retry
