@@ -8,6 +8,7 @@ import com.valuelab.assessment.tracking_number_generator.repositories.TrackingRe
 import com.valuelab.assessment.tracking_number_generator.util.TrackingNumberUtil;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.naming.ServiceUnavailableException;
 import java.time.Instant;
@@ -31,10 +32,8 @@ public class TrackingService {
         for (int attempt = 0; attempt < maxAttempts; attempt++) {
             String trackingNumber = TrackingNumberUtil.generate(request);
 
-            if (!trackingNumber.matches("^[A-Z0-9]{1,16}$")) continue;
-
             try {
-                repository.save(new TrackingNumber(trackingNumber, Instant.now()));
+                repository.save(new TrackingNumber(trackingNumber, request.created_at()));
                 return new TrackingResponse(trackingNumber, ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
             } catch (DuplicateKeyException e) {
                 //Retry loop

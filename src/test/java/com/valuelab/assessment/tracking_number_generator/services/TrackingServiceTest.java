@@ -43,7 +43,7 @@ class TrackingServiceTest {
 
         String generatedTracking = TrackingNumberUtil.generate(request);
 
-        when(repository.save(any())).thenReturn(new TrackingNumber(generatedTracking, Instant.now()));
+        when(repository.save(any())).thenReturn(new TrackingNumber(generatedTracking, request.created_at()));
 
         TrackingResponse response = service.generateUniqueTrackingNumber(request);
 

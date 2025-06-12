@@ -1,5 +1,8 @@
 package com.valuelab.assessment.tracking_number_generator.modal;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
@@ -19,12 +22,14 @@ public class TrackingNumber {
     private String id;
 
     @Field("trackingNumber")
+    @NotBlank
+    @Pattern(regexp = "^[A-Z]{1,16}$")
     private String trackingNumber;
 
     @Field("createdAt")
-    private Instant createdAt;
+    private String createdAt;
 
-    public TrackingNumber(String trackingNumber, Instant createdAt) {
+    public TrackingNumber(String trackingNumber, String createdAt) {
         this.trackingNumber = trackingNumber;
         this.createdAt = createdAt;
     }

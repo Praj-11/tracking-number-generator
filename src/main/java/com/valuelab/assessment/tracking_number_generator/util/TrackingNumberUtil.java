@@ -12,7 +12,7 @@ public class TrackingNumberUtil {
         String slug = request.customer_slug().replaceAll("-", "").toUpperCase();
         String slugPart = slug.length() > 4 ? slug.substring(0, 4) : slug;
         int weightHash = (int) (request.weight() * 1000) % 10000;
-        String timestamp = Long.toString(Instant.now().toEpochMilli(), 36).toUpperCase();
+        String timestamp = Long.toString(Long.parseLong(request.created_at()), 36).toUpperCase();
 
         String raw = origin + dest + slugPart + weightHash + timestamp;
         return raw.replaceAll("[^A-Z0-9]", "").substring(0, Math.min(16, raw.length()));

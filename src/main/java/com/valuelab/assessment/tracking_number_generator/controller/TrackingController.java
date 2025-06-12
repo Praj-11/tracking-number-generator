@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("tracking/api/v1")
+@RequestMapping("/api/v1/tracking-service")
 public class TrackingController {
 
     private final TrackingService service;
