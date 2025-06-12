@@ -8,10 +8,8 @@ import com.valuelab.assessment.tracking_number_generator.repositories.TrackingRe
 import com.valuelab.assessment.tracking_number_generator.util.TrackingNumberUtil;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.naming.ServiceUnavailableException;
-import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
